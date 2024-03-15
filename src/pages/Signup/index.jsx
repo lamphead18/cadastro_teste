@@ -4,6 +4,7 @@ import Button from "../../components/Button";
 import * as C from './styles';
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import emailjs from "@emailjs/browser";
 
 
 const Signup = () => {
@@ -15,6 +16,21 @@ const Signup = () => {
     const [senhaConf, setSenhaConf] = useState("")
     const [senha, setSenha] = useState("");
     const [error, setError] = useState("");
+
+    const sendEmail = (e) => {
+
+        const templateParams = {
+            email: email
+        }
+
+        emailjs.send("service_s6cu4u3", "template_fgrhj3m", templateParams, "Lhr-4pZuIN-uepXam")
+            .then((res) => {
+                console.log("EMAIL ENVIADO", res.status, res.text)
+            })
+            .catch((error) => {
+                console.error("ERRO AO ENVIAR EMAIL", error);
+            });
+    }
 
     const handleSignup = () => {
         if (!email | !senhaConf | !senha) {
@@ -31,6 +47,8 @@ const Signup = () => {
             setError(res);
             return;
         }
+
+        sendEmail();
 
         alert("Usuário cadastrado")
         navigate("/");
