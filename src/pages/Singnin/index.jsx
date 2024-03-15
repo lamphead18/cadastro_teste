@@ -46,6 +46,9 @@ const Signin = () => {
                     value={senha}
                     onChange={(e) => [setSenha(e.target.value), setError("")]}
                 />
+                <C.Strong>
+                    <Link to="/change-password">&nbsp;Mudar senha</Link>
+                </C.Strong>
                 <C.LabelError>{error}</C.LabelError>
                 <Button Text="Entrar" onClick={handleLogin} />
                 <C.LabelSignup>

@@ -5,13 +5,8 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 20px;
-    height: 150vh;
-    padding-top: 150px;
-`;
-
-export const Title = styled.h2`
-    
+    gap: 10px;
+    height: 100vh;
 `;
 
 export const Content = styled.div`
@@ -33,3 +28,22 @@ export const Label = styled.label`
     font-weight: 600;
     color: #676767;
 `;
+
+export const LabelSignin = styled.label`
+    font-size: 16px;
+    color: #676767;
+`;
+
+export const LabelError = styled.label`
+    font-size: 14px;
+    color: red;
+`;
+
+export const Strong = styled.strong`
+    cursor: pointer;
+
+    a {
+        text-decoration: none;
+        color: #676767;
+    }
+`

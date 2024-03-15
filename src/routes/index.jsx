@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from '../pages/Home';
 import Signin from '../pages/Singnin';
 import Signup from '../pages/Signup';
+import ChangePassword from "../ChangePassword";
 import useAuth from '../hooks/useAuth';
 
 
@@ -22,6 +23,7 @@ const RoutesApp = () => {
                     <Route path="/" element={<Signin />} />
                     <Route exact path="/signup" element={<Signup />} />
                     <Route path="*" element={<Signin />} />
+                    <Route exact path="/change-password" element={<ChangePassword />} />
                 </Routes>
             </Fragment>
         </BrowserRouter>

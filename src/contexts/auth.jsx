@@ -62,11 +62,27 @@ export const AuthProvider = ({ children }) => {
     const signout = () => {
         setUser(null);
         localStorage.removeItem("user_token");
-    }
+    };
+
+
+    const changePassword = (email, oldPassword, newPassword) => {
+        const usersStorage = JSON.parse(localStorage.getItem("users_db"));
+
+        const currentUserIndex = usersStorage.findIndex(user => user.email === email && user.password === oldPassword);
+
+        if (currentUserIndex !== -1) {
+            // Atualize a senha do usuário
+            usersStorage[currentUserIndex].password = newPassword;
+            localStorage.setItem("users_db", JSON.stringify(usersStorage));
+            return null; // Sem erro
+        } else {
+            return "Email ou senha antiga incorretos";
+        }
+    };
 
     return (
         <AuthContext.Provider
-            value={{ user, signed: !!user, signin, signup, signout }}
+            value={{ user, signed: !!user, signin, signup, signout, changePassword }}
         >
             {children}
         </AuthContext.Provider>
